@@ -1,0 +1,5 @@
+.gitignore:
+HydnaChatIOS.xcworkspace
+Pods
+Podfile.lock
+
