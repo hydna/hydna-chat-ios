@@ -15,7 +15,7 @@
 #define IS_OS_7_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
 
 // Change the following to your own domain
-#define kHydnaDomain @"testivara.hydna.net/hello"
+#define kHydnaDomain @"ioschatexample.hydna.net"
 
 #define kFont @"HelveticaNeue"
 #define kFontSize 15

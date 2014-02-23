@@ -56,7 +56,7 @@
         [self.channel setDelegate:self];
         
         @try {
-            [self.channel connect:kHydnaDomain mode:READWRITEEMIT token:@"hi"];
+            [self.channel connect:kHydnaDomain mode:READWRITEEMIT token:nil];
         }
         @catch (NSException *exception) {
             [self addTextToChatList:[NSString stringWithFormat:@"Error: %@", exception.reason] user:self.me style:HYAChatBubbleStyleError];
@@ -464,7 +464,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    NSLog(@"did disappear");
     //[self disconnect];
 }
 
@@ -512,16 +511,6 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView:)];
     [self.chatTable addGestureRecognizer:tap];
     
-    //
-    
-    //UIBarButtonItem *connectButton = [[UIBarButtonItem alloc] initWithTitle:@"Connect" style:UIBarButtonItemStylePlain target:self action:@selector(handleConnect)];
-    
-    //[[self navigationItem] setLeftBarButtonItem:connectButton];
-    
-    
-    //UIBarButtonItem *disconnectButton = [[UIBarButtonItem alloc] initWithTitle:@"Disconnect" style:UIBarButtonItemStylePlain target:self action:@selector(handleDisconnect)];
-    
-    //[[self navigationItem] setRightBarButtonItem:disconnectButton];
 }
 
 - (void)didReceiveMemoryWarning
