@@ -1,0 +1,496 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7419087A18AFE88400380EC2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7419087918AFE88400380EC2 /* Foundation.framework */; };
+		7419087C18AFE88400380EC2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7419087B18AFE88400380EC2 /* CoreGraphics.framework */; };
+		7419087E18AFE88400380EC2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7419087D18AFE88400380EC2 /* UIKit.framework */; };
+		7419088418AFE88400380EC2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7419088218AFE88400380EC2 /* InfoPlist.strings */; };
+		7419088618AFE88400380EC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7419088518AFE88400380EC2 /* main.m */; };
+		7419088A18AFE88400380EC2 /* HYAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7419088918AFE88400380EC2 /* HYAAppDelegate.m */; };
+		7419088C18AFE88400380EC2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7419088B18AFE88400380EC2 /* Images.xcassets */; };
+		7419089318AFE88500380EC2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7419089218AFE88500380EC2 /* XCTest.framework */; };
+		7419089418AFE88500380EC2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7419087918AFE88400380EC2 /* Foundation.framework */; };
+		7419089518AFE88500380EC2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7419087D18AFE88400380EC2 /* UIKit.framework */; };
+		74924DBD18B7DE45002F911D /* HYAChatBubbleCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74924DBB18B7DE45002F911D /* HYAChatBubbleCellView.m */; };
+		74ADF27918AFEB5600E3792A /* HYAChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74ADF27818AFEB5600E3792A /* HYAChatViewController.m */; };
+		74B8A71D18B0207F00710FA0 /* HYAChatInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B8A71C18B0207F00710FA0 /* HYAChatInputView.m */; };
+		74F7C5BB18B3730D00364D1D /* HYAMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F7C5BA18B3730D00364D1D /* HYAMessage.m */; };
+		86363F5E58834F888C05D8D8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4495F3549724A7F9FD9DCD7 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7419089618AFE88500380EC2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7419086E18AFE88400380EC2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7419087518AFE88400380EC2;
+			remoteInfo = HydnaChatIOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		342B6FCDBCBA44CC92BE23BD /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		7419087618AFE88400380EC2 /* HydnaChatIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HydnaChatIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7419087918AFE88400380EC2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7419087B18AFE88400380EC2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7419087D18AFE88400380EC2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7419088118AFE88400380EC2 /* HydnaChatIOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HydnaChatIOS-Info.plist"; sourceTree = "<group>"; };
+		7419088318AFE88400380EC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7419088518AFE88400380EC2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7419088718AFE88400380EC2 /* HydnaChatIOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HydnaChatIOS-Prefix.pch"; sourceTree = "<group>"; };
+		7419088818AFE88400380EC2 /* HYAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYAAppDelegate.h; sourceTree = "<group>"; };
+		7419088918AFE88400380EC2 /* HYAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYAAppDelegate.m; sourceTree = "<group>"; };
+		7419088B18AFE88400380EC2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7419089118AFE88500380EC2 /* HydnaChatIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HydnaChatIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7419089218AFE88500380EC2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		74924DBB18B7DE45002F911D /* HYAChatBubbleCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYAChatBubbleCellView.m; sourceTree = "<group>"; };
+		74924DBC18B7DE45002F911D /* HYAChatBubbleCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYAChatBubbleCellView.h; sourceTree = "<group>"; };
+		74ADF27718AFEB5600E3792A /* HYAChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYAChatViewController.h; sourceTree = "<group>"; };
+		74ADF27818AFEB5600E3792A /* HYAChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYAChatViewController.m; sourceTree = "<group>"; };
+		74B8A71B18B0207F00710FA0 /* HYAChatInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYAChatInputView.h; sourceTree = "<group>"; };
+		74B8A71C18B0207F00710FA0 /* HYAChatInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYAChatInputView.m; sourceTree = "<group>"; };
+		74F7C5B818B2786D00364D1D /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		74F7C5B918B3730D00364D1D /* HYAMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYAMessage.h; sourceTree = "<group>"; };
+		74F7C5BA18B3730D00364D1D /* HYAMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYAMessage.m; sourceTree = "<group>"; };
+		C4495F3549724A7F9FD9DCD7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7419087318AFE88400380EC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7419087C18AFE88400380EC2 /* CoreGraphics.framework in Frameworks */,
+				7419087E18AFE88400380EC2 /* UIKit.framework in Frameworks */,
+				7419087A18AFE88400380EC2 /* Foundation.framework in Frameworks */,
+				86363F5E58834F888C05D8D8 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7419088E18AFE88500380EC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7419089318AFE88500380EC2 /* XCTest.framework in Frameworks */,
+				7419089518AFE88500380EC2 /* UIKit.framework in Frameworks */,
+				7419089418AFE88500380EC2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7419086D18AFE88400380EC2 = {
+			isa = PBXGroup;
+			children = (
+				7419087F18AFE88400380EC2 /* HydnaChatIOS */,
+				7419087818AFE88400380EC2 /* Frameworks */,
+				7419087718AFE88400380EC2 /* Products */,
+				342B6FCDBCBA44CC92BE23BD /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		7419087718AFE88400380EC2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7419087618AFE88400380EC2 /* HydnaChatIOS.app */,
+				7419089118AFE88500380EC2 /* HydnaChatIOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7419087818AFE88400380EC2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7419087918AFE88400380EC2 /* Foundation.framework */,
+				7419087B18AFE88400380EC2 /* CoreGraphics.framework */,
+				7419087D18AFE88400380EC2 /* UIKit.framework */,
+				7419089218AFE88500380EC2 /* XCTest.framework */,
+				C4495F3549724A7F9FD9DCD7 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7419087F18AFE88400380EC2 /* HydnaChatIOS */ = {
+			isa = PBXGroup;
+			children = (
+				7419088818AFE88400380EC2 /* HYAAppDelegate.h */,
+				7419088918AFE88400380EC2 /* HYAAppDelegate.m */,
+				74ADF27718AFEB5600E3792A /* HYAChatViewController.h */,
+				74ADF27818AFEB5600E3792A /* HYAChatViewController.m */,
+				74924DBB18B7DE45002F911D /* HYAChatBubbleCellView.m */,
+				74924DBC18B7DE45002F911D /* HYAChatBubbleCellView.h */,
+				74B8A71B18B0207F00710FA0 /* HYAChatInputView.h */,
+				74B8A71C18B0207F00710FA0 /* HYAChatInputView.m */,
+				74F7C5B918B3730D00364D1D /* HYAMessage.h */,
+				74F7C5BA18B3730D00364D1D /* HYAMessage.m */,
+				7419088B18AFE88400380EC2 /* Images.xcassets */,
+				7419088018AFE88400380EC2 /* Supporting Files */,
+				74F7C5B818B2786D00364D1D /* Constants.h */,
+			);
+			path = HydnaChatIOS;
+			sourceTree = "<group>";
+		};
+		7419088018AFE88400380EC2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7419088118AFE88400380EC2 /* HydnaChatIOS-Info.plist */,
+				7419088218AFE88400380EC2 /* InfoPlist.strings */,
+				7419088518AFE88400380EC2 /* main.m */,
+				7419088718AFE88400380EC2 /* HydnaChatIOS-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7419087518AFE88400380EC2 /* HydnaChatIOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 741908A218AFE88500380EC2 /* Build configuration list for PBXNativeTarget "HydnaChatIOS" */;
+			buildPhases = (
+				627190100BE24C09B33892CD /* Check Pods Manifest.lock */,
+				7419087218AFE88400380EC2 /* Sources */,
+				7419087318AFE88400380EC2 /* Frameworks */,
+				7419087418AFE88400380EC2 /* Resources */,
+				0AC3B9E98B8D4D258D2EAE05 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HydnaChatIOS;
+			productName = HydnaChatIOS;
+			productReference = 7419087618AFE88400380EC2 /* HydnaChatIOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7419089018AFE88500380EC2 /* HydnaChatIOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 741908A518AFE88500380EC2 /* Build configuration list for PBXNativeTarget "HydnaChatIOSTests" */;
+			buildPhases = (
+				7419088D18AFE88500380EC2 /* Sources */,
+				7419088E18AFE88500380EC2 /* Frameworks */,
+				7419088F18AFE88500380EC2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7419089718AFE88500380EC2 /* PBXTargetDependency */,
+			);
+			name = HydnaChatIOSTests;
+			productName = HydnaChatIOSTests;
+			productReference = 7419089118AFE88500380EC2 /* HydnaChatIOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7419086E18AFE88400380EC2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = HYA;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = skaggivara;
+				TargetAttributes = {
+					7419089018AFE88500380EC2 = {
+						TestTargetID = 7419087518AFE88400380EC2;
+					};
+				};
+			};
+			buildConfigurationList = 7419087118AFE88400380EC2 /* Build configuration list for PBXProject "HydnaChatIOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7419086D18AFE88400380EC2;
+			productRefGroup = 7419087718AFE88400380EC2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7419087518AFE88400380EC2 /* HydnaChatIOS */,
+				7419089018AFE88500380EC2 /* HydnaChatIOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7419087418AFE88400380EC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7419088418AFE88400380EC2 /* InfoPlist.strings in Resources */,
+				7419088C18AFE88400380EC2 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7419088F18AFE88500380EC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0AC3B9E98B8D4D258D2EAE05 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		627190100BE24C09B33892CD /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7419087218AFE88400380EC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74ADF27918AFEB5600E3792A /* HYAChatViewController.m in Sources */,
+				74F7C5BB18B3730D00364D1D /* HYAMessage.m in Sources */,
+				7419088618AFE88400380EC2 /* main.m in Sources */,
+				74924DBD18B7DE45002F911D /* HYAChatBubbleCellView.m in Sources */,
+				74B8A71D18B0207F00710FA0 /* HYAChatInputView.m in Sources */,
+				7419088A18AFE88400380EC2 /* HYAAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7419088D18AFE88500380EC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7419089718AFE88500380EC2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7419087518AFE88400380EC2 /* HydnaChatIOS */;
+			targetProxy = 7419089618AFE88500380EC2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7419088218AFE88400380EC2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7419088318AFE88400380EC2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		741908A018AFE88500380EC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		741908A118AFE88500380EC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		741908A318AFE88500380EC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 342B6FCDBCBA44CC92BE23BD /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HydnaChatIOS/HydnaChatIOS-Prefix.pch";
+				INFOPLIST_FILE = "HydnaChatIOS/HydnaChatIOS-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		741908A418AFE88500380EC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 342B6FCDBCBA44CC92BE23BD /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HydnaChatIOS/HydnaChatIOS-Prefix.pch";
+				INFOPLIST_FILE = "HydnaChatIOS/HydnaChatIOS-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		741908A618AFE88500380EC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HydnaChatIOS.app/HydnaChatIOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HydnaChatIOS/HydnaChatIOS-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "HydnaChatIOSTests/HydnaChatIOSTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		741908A718AFE88500380EC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HydnaChatIOS.app/HydnaChatIOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HydnaChatIOS/HydnaChatIOS-Prefix.pch";
+				INFOPLIST_FILE = "HydnaChatIOSTests/HydnaChatIOSTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7419087118AFE88400380EC2 /* Build configuration list for PBXProject "HydnaChatIOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				741908A018AFE88500380EC2 /* Debug */,
+				741908A118AFE88500380EC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		741908A218AFE88500380EC2 /* Build configuration list for PBXNativeTarget "HydnaChatIOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				741908A318AFE88500380EC2 /* Debug */,
+				741908A418AFE88500380EC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		741908A518AFE88500380EC2 /* Build configuration list for PBXNativeTarget "HydnaChatIOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				741908A618AFE88500380EC2 /* Debug */,
+				741908A718AFE88500380EC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7419086E18AFE88400380EC2 /* Project object */;
+}

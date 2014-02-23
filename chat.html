@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>A Simple Chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://cdn.hydna.com/1/hydna.js"></script>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            line-height: normal;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: arial, sans-serif;
+        }
+
+        /* header */
+
+        #header {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 40px;
+            background: #181818;
+            color: #FFF;
+            z-index: 10000;
+        }
+
+        #header h1 {
+            margin: 0 0 0 0;
+            font-size: 14px;
+            line-height: 40px;
+        }
+
+        #header h1 a {
+            padding-left: 10px;
+            color: white;
+            text-decoration: none;
+        }
+
+        #header h1 .sub {
+            margin-left: 6px;
+            color: #666;
+            font-size: 12px;
+            font-weight: normal;
+        }
+
+        #header h1 span{
+            color: #666;
+            padding-left: 10px;
+        }
+
+        /* chat */
+
+        #chat {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            right: 0;
+            padding: 10px;
+            overflow: auto;
+        }
+
+        #chat p {
+            line-height: 150%;
+        }
+
+        #chat p span.nick {
+            font-weight: bold;
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        #chat p span.time {
+            font-weight: bold;
+            display: inline-block;
+            color: #999;
+            font-size: 14px;
+            font-family: monospace;
+        }
+
+        #chat p span.prefix {
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 5px;
+            font-size: 14px;
+            color: #FF5033;
+            font-weight: monaco, monospace;
+        }
+
+        #chat p img{
+            display: block;
+            padding: 10px 0;
+            border-radius: 10px;
+        }
+
+        #chat p.error {
+            color: red;
+        }
+
+        #chat p.info {
+            color: #666;
+        }
+
+        /* input */
+
+        #input {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            border-top: 1px solid #999;
+            padding: 0 10px;
+            background: #FFF;
+            box-shadow: inset 0 3px 0 #EEE;
+        }
+
+        #input input {
+            display: block;
+            width: 100%;
+            height: 20px;
+            line-height: 20px;
+            border: none;
+            padding: 10px 0;
+            background: transparent;
+            font-size: 16px;
+            margin: 0;
+        }
+
+        #input input:focus {
+            outline: 0;
+        } 
+
+    </style>
+    <script>
+        $(document).ready(function(){
+            
+            var domain = "testivara.hydna.net/hello?hi";
+            var chat = $("#chat");
+            var nick = nickgen();
+            var channel = new HydnaChannel(domain, 'rwe');
+            
+            $("#header h1 span").html("Change hydna domain in script tag");
+
+            chat.infoMessage('Connecting ...');
+
+            function resizeHandler () {
+                chat.css({ maxHeight: Math.max($("body").outerHeight() - 100, 200) });
+            }
+
+            $(window).resize(resizeHandler);
+            $("input").bind("focus blur", resizeHandler);
+            
+            resizeHandler();
+
+            channel.onopen = function(event){
+                chat.infoMessage('You are now connected and will henceforth be known as "'+ nick + '".');
+            }
+
+            channel.onmessage = function(event){
+                try{
+                    var msg = JSON.parse(event.data);
+                    if(msg.type == 0){
+                        var user = msg.usr;
+
+                        if(user == nick){
+                            user = "you";
+                        }else{
+                            user = "someone";
+                        }
+
+                        chat.chatMessage(user, msg.data);
+                    }else if(msg.type == 1){
+                        
+                        chat.chatImage(msg.data);
+
+                    }
+                }catch(e){
+                }
+
+                chat.prop('scrollTop', chat.prop('scrollHeight'));
+            }
+
+            channel.onclose = function(event){
+                chat.infoMessage('Connection closed. Please reload page.');
+            }
+
+            $("#input").on('submit', function(e){
+                e.preventDefault();
+
+                var message = $("#input input").val();
+                if(message.length > 0){
+                    var msg = {usr:nick, type:0, data:message};
+
+                    channel.send(JSON.stringify(msg));
+
+                    $("#input input").val('');
+    
+                }
+
+            });
+
+        });
+        
+        // generate a random nickname.
+        function nickgen() {
+            var consonants = 'bcddfghklmmnnprssttv';
+            var vocals = 'aaeeiioouuy';
+            var length = 4 + Math.floor(Math.random() * 4);
+            var nick = [];
+            var pool;
+            for (var i = 0; i < length; i++) {
+                pool = (i % 2 ? vocals : consonants);
+                nick.push(pool.charAt(Math.floor(Math.random() * pool.length)));
+            }
+            return nick.join('');
+        }
+
+        // return the current time in a nice format
+        function time() {
+            var d = new Date();
+            var h = d.getHours();
+            var m = d.getMinutes();
+            return (h < 12?'0' + h:h) + ':' + (m < 10?'0' + m:m);
+        }
+        // append a chat message to an element
+        $.fn.chatMessage = function(nick, message) {
+            // escape nicks and messages to prevent evil users from doing evil things
+            nick = nick.replace(/<([^>]+)>/g,'');
+            message = message.replace(/<([^>]+)>/g,'');
+            $(this).append([
+            '<p class="message">',
+            '<span class="time">[',
+              time(),
+              ']</span>',
+              '<span class="nick">',
+              nick,
+              ':</span>',
+              message,
+              '</p>'
+            ].join(''));
+        };
+
+        // append an info message to an element
+        $.fn.infoMessage = function(message) {
+            message = message.replace(/<([^>]+)>/g,'');
+            $(this).append([
+            '<p class="info">',
+            '<span class="prefix">★</span>',
+            message,
+            '</p>'
+            ].join(''));
+        };
+        
+        // append an info message to an element
+        $.fn.chatImage = function(img) {
+            
+            if(img.indexOf("data:image/jpg;base64,") == -1){
+                img = "data:image/png;base64,"+img;
+            }
+
+            $(this).append([
+            '<p class="message">',
+            '<img src="'+img+'">',
+            '</p>'
+            ].join(''));
+        };
+
+        // append an error message to an element
+        $.fn.errorMessage = function(message) {
+            $(this).append([
+            '<p class="error">',
+            '<span class="prefix">✗</span>',
+            message,
+            '</p>'
+            ].join(''));
+        };
+    
+    </script>
+</head>
+<body>
+    <div id="header">
+        <h1><a href="https://www.hydna.com/" title="Give us a visit">Hydna Chat</a><span>Connecting to: </span></h1>
+    </div>
+    <div id="chat"></div>
+    <form id="input">
+        <input type="text" name="chat-input" placeholder="Your chat message"/>
+    </form>
+</body>
