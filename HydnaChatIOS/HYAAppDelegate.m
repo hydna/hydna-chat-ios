@@ -15,14 +15,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
     
     UIViewController *rootView = [[HYAChatViewController alloc] initWithNibName:nil bundle:nil];
 
-    // Override point for customization after application launch.
     self.navController = [[UINavigationController alloc] initWithRootViewController:rootView];
 
-    // Set root controller
     [[self window] setRootViewController:self.navController];
 
     self.window.backgroundColor = [UIColor whiteColor];
