@@ -9,14 +9,6 @@
 #import "HYAAppDelegate.h"
 #import "HYAChatViewController.h"
 
-/* TODO
- 
- * check all error checks...
- * reconnect logic
- * disconnect when in background...
- * cleanup
- * write tutorial
- */
 
 @implementation HYAAppDelegate
 
