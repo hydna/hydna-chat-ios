@@ -288,10 +288,10 @@
 {
     if ([self.chatList count] > indexPath.row) {
         
-        HYAMessage * item = [self.chatList objectAtIndex:indexPath.row];
+        HYAMessage *item = [self.chatList objectAtIndex:indexPath.row];
         
         if (item.style == HYAChatBubbleStyleImage) {
-            UIImage * img = item.image;
+            UIImage *img = item.image;
             return [HYAChatBubbleCellView outerSizeWithImage:img].size.height;
         }
         
