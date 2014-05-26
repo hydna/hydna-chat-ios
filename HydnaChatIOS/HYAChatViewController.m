@@ -453,13 +453,13 @@
         if (![UIImagePickerController isSourceTypeAvailable:pickType]) {
             pickType = UIImagePickerControllerSourceTypePhotoLibrary;
         }
+        
+        [self.image_picker setSourceType:pickType];
     
         if (pickType == UIImagePickerControllerSourceTypeCamera) {
             self.image_picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
-            self.image_picker.showsCameraControls = NO;
+            //self.image_picker.showsCameraControls = NO;
         }
-    
-        [self.image_picker setSourceType:pickType];
     
         [self presentViewController:self.image_picker animated:YES completion:nil];
     }
