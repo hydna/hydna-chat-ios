@@ -18,8 +18,8 @@ typedef enum {
     
 } HYAMessageType;
 
-@property(nonatomic) NSString *text;
-@property(nonatomic) NSString *user;
+@property(nonatomic, copy) NSString *text;
+@property(nonatomic, copy) NSString *user;
 @property(nonatomic) int type;
 @property(nonatomic) UIImage *image;
 @property(nonatomic) HYAChatBubbleStyle style;

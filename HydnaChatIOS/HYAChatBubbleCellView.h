@@ -27,7 +27,7 @@ typedef enum {
     
 } HYAChatBubblePosition;
 
-@property(nonatomic, assign) NSString *text;
+@property(nonatomic, copy) NSString *text;
 @property(nonatomic, assign) int maxWidth;
 @property(nonatomic) UILabel *textarea;
 @property(nonatomic) UILabel *time;

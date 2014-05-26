@@ -18,8 +18,8 @@
               reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+    
     if (self) {
-        
         self.text = text;
         self.maxWidth = maxWidth;
         self.style = style;
@@ -96,7 +96,7 @@
     UIColor *borderColor = [UIColor lightGrayColor];
     borderColor = [borderColor colorWithAlphaComponent:0.0];
     
-    switch(self.style){
+    switch (self.style) {
         case HYAChatBubbleStyleBubble:
             if (self.position == HYAChatBubblePositionLeft) {
                 borderColor = [borderColor colorWithAlphaComponent:0.4];
@@ -106,7 +106,7 @@
             }
             break;
         case HYAChatBubbleStyleError:
-            textColor = [UIColor redColor];
+            textColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
             backgColor = [UIColor whiteColor];
             break;
         case HYAChatBubbleStyleStatus:

@@ -27,7 +27,7 @@
         
         self.keyboardFrame = CGRectMake(0, 0, 0, 0);
         
-        if(!self.me){
+        if (!self.me) {
         
             self.me = [self UUID];
             
@@ -75,14 +75,67 @@
     }
 }
 
+- (void)showReconnect
+{
+    if (!self.reconnect_btn) {
+        self.reconnect_btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self.reconnect_btn setFrame:CGRectMake(40, (self.view.frame.size.height * .5) - 26, self.view.frame.size.width - 80, 52)];
+        self.reconnect_btn.layer.cornerRadius = 5.0;
+        [self.reconnect_btn setTitle:@"Touch to connect" forState:UIControlStateNormal];
+        [self.reconnect_btn setBackgroundColor:[UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0]];
+        [self.reconnect_btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.reconnect_btn addTarget:self action:@selector(handleReconnect) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.view addSubview:self.reconnect_btn];
+    }
+    
+    [self.reconnect_btn setEnabled:YES];
+    self.reconnect_btn.alpha = 0.0;
+    self.reconnect_btn.transform = CGAffineTransformMakeScale(0.5, 0.5);
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        self.reconnect_btn.alpha = 1.0;
+        self.reconnect_btn.transform = CGAffineTransformMakeScale(1.0, 1.0);
+    }];
+}
+
+- (void)hideReconnect
+{
+    if (self.reconnect_btn) {
+        
+        [UIView animateWithDuration:0.2 animations:^{
+            self.reconnect_btn.alpha = 0.0;
+            self.reconnect_btn.transform = CGAffineTransformMakeScale(0.5, 0.5);
+        }];
+        
+        [self.reconnect_btn setEnabled:NO];
+    }
+}
+
+- (void)handleReconnect
+{
+    
+    [self hideReconnect];
+    
+    if (self.channel) {
+        
+        [self.channel setDelegate:nil];
+        self.channel = nil;
+    }
+    
+    [self connect];
+    
+    [self.loader startAnimating];
+}
+
 - (void)channelOpen:(HYChannel *)sender
             message:(NSString *)message
 {
-    [self.channel emitString:@"ping"];
-    
     [self.loader stopAnimating];
     
     [self addTextToChatList:[NSString stringWithFormat:@"Connected to hydna domain '%@' Let's chat!", kHydnaDomain] user:self.me style:HYAChatBubbleStyleStatus];
+ 
+    [self hideReconnect];
     
     [self.chatInput enable];
 
@@ -115,7 +168,7 @@
     
     NSData *payload = [data content];
     
-    if([data isUtf8Content]){
+    if ([data isUtf8Content]) {
         NSString *message = [[ NSString alloc ] initWithData:payload encoding:NSUTF8StringEncoding];
         NSLog(@"signal received: %@",message);
     }
@@ -132,13 +185,13 @@
         [self addTextToChatList:[NSString stringWithFormat:@"Error: %@", error.reason] user:self.me style:HYAChatBubbleStyleError];
     }
     
-    [self.loader startAnimating];
+    [self showReconnect];
     [self.chatInput disable];
 }
 
--(void)addTextToChatList:(NSString *)text
-                    user:(NSString *)user
-                   style:(HYAChatBubbleStyle)style
+- (void)addTextToChatList:(NSString *)text
+                     user:(NSString *)user
+                    style:(HYAChatBubbleStyle)style
 {
     
     HYAChatBubblePosition position = HYAChatBubblePositionRight;
@@ -147,7 +200,7 @@
         position = HYAChatBubblePositionLeft;
     }
     
-    HYAMessage * message = [HYAMessage withText:text user:user style:style position:position];
+    HYAMessage *message = [HYAMessage withText:text user:user style:style position:position];
     
     [self.chatList addObject:message];
     [self.chatTable reloadData];
@@ -155,8 +208,8 @@
     [self scrollToBottom];
 }
 
--(void)addImageToChatList:(UIImage *)image
-                     user:(NSString *)user
+- (void)addImageToChatList:(UIImage *)image
+                      user:(NSString *)user
 {
     
     HYAChatBubblePosition position = HYAChatBubblePositionRight;
@@ -165,7 +218,7 @@
         position = HYAChatBubblePositionLeft;
     }
     
-    HYAMessage * message = [HYAMessage withImage:image user:user position:position];
+    HYAMessage *message = [HYAMessage withImage:image user:user position:position];
     
     [self.chatList addObject:message];
     [self.chatTable reloadData];
@@ -177,7 +230,7 @@
 - (void)scrollToBottom
 {
     if (self.chatList.count > 0) {
-        NSIndexPath* ipath = [NSIndexPath indexPathForRow: self.chatList.count-1 inSection: 0];
+        NSIndexPath *ipath = [NSIndexPath indexPathForRow: self.chatList.count-1 inSection: 0];
         [self.chatTable scrollToRowAtIndexPath: ipath atScrollPosition: UITableViewScrollPositionTop animated: YES];
     }
 }
@@ -212,22 +265,24 @@
 }
 
 // Called before the user changes the selection. Return a new indexPath, or nil, to change the proposed selection.
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
-    if(cell.selectionStyle == UITableViewCellSelectionStyleNone){
-        NSLog(@"do not select");
+- (NSIndexPath *)tableView:(UITableView *)tableView
+  willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if (cell.selectionStyle == UITableViewCellSelectionStyleNone) {
         return nil;
     }
     return indexPath;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
 {
     return [self.chatList count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     static NSString *CellIdentifier = @"HYAChatBubbleCell";
@@ -263,14 +318,16 @@
                                                           reuseIdentifier:CellIdentifier];
         }
         
-        if ( style != HYAChatBubbleStyleStatus && style != HYAChatBubbleStyleError ) {
+        if (style != HYAChatBubbleStyleStatus && style != HYAChatBubbleStyleError) {
             cell.transform = CGAffineTransformMakeScale(.1, .1);
         }
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.alpha = 0;
         
-        [UIView animateWithDuration:0.3 animations:^{ cell.alpha = 1.0; cell.transform = CGAffineTransformMakeScale(1.0, 1.0);}];
+        [UIView animateWithDuration:0.3 animations:^{
+            cell.alpha = 1.0; cell.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        }];
         
     } else {
         
@@ -357,14 +414,14 @@
 
 - (void)cameraTouched:(HYAChatInputView *)sender
 {
-    if (!self.imagePicker) {
+    if (!self.image_picker) {
         
-        self.imagePicker = [[UIImagePickerController alloc] init];
-        [self.imagePicker setSourceType:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
-        [self.imagePicker setDelegate:self];
+        self.image_picker = [[UIImagePickerController alloc] init];
+        [self.image_picker setSourceType:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
+        [self.image_picker setDelegate:self];
     }
     
-    [self presentViewController:self.imagePicker animated:YES completion:nil];
+    [self presentViewController:self.image_picker animated:YES completion:nil];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -403,7 +460,7 @@
                 if ([payload lengthOfBytesUsingEncoding:NSUTF8StringEncoding] < PAYLOAD_MAX_LIMIT) {
                     [self.channel writeString:payload];
                 } else {
-                    NSLog(@"Package to large to send at: %i bytes", [payload lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
+                    NSLog(@"Package to large to send at: %i bytes", (int)[payload lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
                 }
             }
         }
@@ -462,11 +519,6 @@
     [self connect];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    //[self disconnect];
-}
-
 - (void)handleConnect
 {
     if (self.channel) {
@@ -507,6 +559,15 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+    
+    
+    UIBarButtonItem *disconnect_btn = [[UIBarButtonItem alloc]
+                                   initWithTitle:@"Disconnect"
+                                   style:UIBarButtonItemStyleBordered
+                                   target:self
+                                   action:@selector(handleDisconnect)];
+    
+    [self.navigationItem setRightBarButtonItem:disconnect_btn animated:NO];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView:)];
     [self.chatTable addGestureRecognizer:tap];
