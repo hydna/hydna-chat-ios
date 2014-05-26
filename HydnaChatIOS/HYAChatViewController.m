@@ -458,7 +458,6 @@
     
         if (pickType == UIImagePickerControllerSourceTypeCamera) {
             self.image_picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
-            //self.image_picker.showsCameraControls = NO;
         }
     
         [self presentViewController:self.image_picker animated:YES completion:nil];
