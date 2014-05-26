@@ -11,7 +11,7 @@
 #import "HYAMessage.h"
 #import "HYAChatInputView.h"
 
-@interface HYAChatViewController : UIViewController <HYChannelDelegate, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, HYAChatInputDelegate>
+@interface HYAChatViewController : UIViewController <HYChannelDelegate, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, HYAChatInputDelegate>
 
 @property(nonatomic, strong) HYChannel *channel;
 @property(nonatomic, strong) UITableView *chatTable;

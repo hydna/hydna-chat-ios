@@ -414,13 +414,44 @@
 
 - (void)cameraTouched:(HYAChatInputView *)sender
 {
-    if (!self.image_picker) {
-        
-        self.image_picker = [[UIImagePickerController alloc] init];
-        [self.image_picker setDelegate:self];
+    
+    UIActionSheet *imageOptions = [[UIActionSheet alloc] initWithTitle:@"Send image from" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Camera", @"Image library", nil];
+    
+    [imageOptions showInView:self.view];
+    
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    UIImagePickerControllerSourceType pickType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    switch (buttonIndex){
+        case 0:
+            pickType = UIImagePickerControllerSourceTypeCamera;
+        break;
+            
+        case 1:
+            pickType = UIImagePickerControllerSourceTypePhotoLibrary;
+        break;
+            
+        default:
+        break;
     }
     
-    [self.image_picker setSourceType:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
+    self.image_picker = [[UIImagePickerController alloc] init];
+    [self.image_picker setDelegate:self];
+    
+    if (![UIImagePickerController isSourceTypeAvailable:pickType]) {
+        pickType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
+    if (pickType == UIImagePickerControllerSourceTypeCamera) {
+        self.image_picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
+        self.image_picker.showsCameraControls = NO;
+    }
+    
+    [self.image_picker setSourceType:pickType];
     
     [self presentViewController:self.image_picker animated:YES completion:nil];
 }
