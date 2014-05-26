@@ -15,6 +15,8 @@
 #define IS_OS_7_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
 
 // Change the following to your own domain
+#define kEnableDisconnect 0
+
 #define kHydnaDomain @"ioschatexample.hydna.net"
 
 #define kFont @"HelveticaNeue"
@@ -26,7 +28,7 @@
 #define kPaddingBottom 7.0
 #define kMargin 8.0
 #define kInset 80.0
-#define kCameraIcon @"camera-icon.png"
+#define kCameraIcon @"camera-icon"
 #define kInputLimit 140
 #define kMaxImageSize 224
 

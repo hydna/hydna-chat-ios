@@ -56,7 +56,7 @@
     self.inputbackg.backgroundColor = [UIColor whiteColor];
     [self.inputbackg setNeedsDisplay];
     
-    UIEdgeInsets insets = { .left = 3, .right = 0, .top = -5, .bottom = -4 };
+    UIEdgeInsets insets = {.left = 3, .right = 0, .top = -5, .bottom = -4};
     
     self.input = [[UITextView alloc] initWithFrame:self.inputbackg.frame];
     self.input.contentInset = insets;
@@ -76,7 +76,7 @@
     self.submit.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     self.submit.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [self.submit setTitle:@"Send" forState:UIControlStateNormal];
-    [self.submit setFrame:CGRectMake(self.bounds.size.width -(SUBMIT_SIZE + PADDING + MARGIN), 0, SUBMIT_SIZE + PADDING + MARGIN, self.bounds.size.height)];
+    [self.submit setFrame:CGRectMake(self.bounds.size.width - (SUBMIT_SIZE + PADDING + MARGIN), 0, SUBMIT_SIZE + PADDING + MARGIN, self.bounds.size.height)];
     [self.submit addTarget:self action:@selector(handleSubmit) forControlEvents:UIControlEventTouchUpInside];
     
     self.submitstarty = self.submit.frame.origin.y;

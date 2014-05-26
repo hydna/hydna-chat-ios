@@ -170,7 +170,7 @@
     
     if ([data isUtf8Content]) {
         NSString *message = [[ NSString alloc ] initWithData:payload encoding:NSUTF8StringEncoding];
-        NSLog(@"signal received: %@",message);
+        NSLog(@"signal received: %@", message);
     }
 }
 
@@ -179,7 +179,7 @@
 {
     if (error.wasDenied) {
         [self addTextToChatList:[NSString stringWithFormat:@"Connection to hydna was denied: %@", error.reason] user:self.me style:HYAChatBubbleStyleStatus];
-    } else if(error.wasClean) {
+    } else if (error.wasClean) {
         [self addTextToChatList:@"Connection closed by user!" user:self.me style:HYAChatBubbleStyleStatus];
     } else {
         [self addTextToChatList:[NSString stringWithFormat:@"Error: %@", error.reason] user:self.me style:HYAChatBubbleStyleError];
@@ -417,12 +417,14 @@
     if (!self.image_picker) {
         
         self.image_picker = [[UIImagePickerController alloc] init];
-        [self.image_picker setSourceType:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
         [self.image_picker setDelegate:self];
     }
     
+    [self.image_picker setSourceType:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
+    
     [self presentViewController:self.image_picker animated:YES completion:nil];
 }
+
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
@@ -560,17 +562,18 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
     
-    
-    UIBarButtonItem *disconnect_btn = [[UIBarButtonItem alloc]
-                                   initWithTitle:@"Disconnect"
-                                   style:UIBarButtonItemStyleBordered
-                                   target:self
-                                   action:@selector(handleDisconnect)];
-    
-    [self.navigationItem setRightBarButtonItem:disconnect_btn animated:NO];
-    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView:)];
     [self.chatTable addGestureRecognizer:tap];
+    
+    if (kEnableDisconnect > 0){
+        UIBarButtonItem *disconnect_btn = [[UIBarButtonItem alloc]
+                                           initWithTitle:@"Disconnect"
+                                           style:UIBarButtonItemStyleBordered
+                                           target:self
+                                           action:@selector(handleDisconnect)];
+        
+        [self.navigationItem setRightBarButtonItem:disconnect_btn animated:NO];
+    }
     
 }
 

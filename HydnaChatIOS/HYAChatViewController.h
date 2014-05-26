@@ -20,7 +20,6 @@
 @property(nonatomic, strong) UIImagePickerController *image_picker;
 @property(nonatomic, strong) UIActivityIndicatorView *loader;
 @property(nonatomic, strong) UIButton *reconnect_btn;
-
 @property(nonatomic, strong) NSString *me;
 @property CGRect keyboardFrame;
 
