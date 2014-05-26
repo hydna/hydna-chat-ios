@@ -426,6 +426,8 @@
     
     UIImagePickerControllerSourceType pickType = UIImagePickerControllerSourceTypePhotoLibrary;
     
+    BOOL pickImage = YES;
+    
     switch (buttonIndex){
         case 0:
             pickType = UIImagePickerControllerSourceTypeCamera;
@@ -435,25 +437,32 @@
             pickType = UIImagePickerControllerSourceTypePhotoLibrary;
         break;
             
+        case 2:
+            pickImage = NO;
+        break;
+        
         default:
         break;
     }
     
-    self.image_picker = [[UIImagePickerController alloc] init];
-    [self.image_picker setDelegate:self];
+    if (pickImage) {
+        
+        self.image_picker = [[UIImagePickerController alloc] init];
+        [self.image_picker setDelegate:self];
     
-    if (![UIImagePickerController isSourceTypeAvailable:pickType]) {
-        pickType = UIImagePickerControllerSourceTypePhotoLibrary;
+        if (![UIImagePickerController isSourceTypeAvailable:pickType]) {
+            pickType = UIImagePickerControllerSourceTypePhotoLibrary;
+        }
+    
+        if (pickType == UIImagePickerControllerSourceTypeCamera) {
+            self.image_picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
+            self.image_picker.showsCameraControls = NO;
+        }
+    
+        [self.image_picker setSourceType:pickType];
+    
+        [self presentViewController:self.image_picker animated:YES completion:nil];
     }
-    
-    if (pickType == UIImagePickerControllerSourceTypeCamera) {
-        self.image_picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
-        self.image_picker.showsCameraControls = NO;
-    }
-    
-    [self.image_picker setSourceType:pickType];
-    
-    [self presentViewController:self.image_picker animated:YES completion:nil];
 }
 
 
